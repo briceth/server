@@ -8,12 +8,13 @@ const morgan = require('morgan');
 const app = express(); // II - we create an instance of express which is our app
 const router = require('./router');
 const mongoose = require('mongoose');
-
+const cors = require('cors');
 //DB setup
 mongoose.connect('mongodb://localhost:auth/auth'); //create the DB called auth
 
 //app setup
 app.use(morgan('combined'));
+app.use(cors());
 app.use(bodyParser.json({ type: '*/*' }));
 router(app);
 
